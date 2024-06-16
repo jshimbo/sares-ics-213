@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ICS213 General Message</title>
+    <link rel="stylesheet" type="text/css" href="./src/purecss.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+  </head>
+  <body>
+    <div id="pop1" class="pop-up">
+      <!-- The pop-up block -->
+      <div class="popBox">
+        <!-- If the content becomes larger than the pop-up this div will scroll the content -->
+        <div class="popScroll">
+          <!-- Text for help starts here -->
+          <h2>ICS-213 Form</h2>
+          <h3>Introduction</h3>
+          <p>
+            This web page was designed for receiving messages via radio. Type in
+            the message into the appropriate fields. Use the tab key to move
+            between fields.
+          </p>
+          <p>
+            The form is designed to print to a single page. Use the browser's
+            print preview function to verify. Adjust the scaling percentage or
+            margins if needed.
+          </p>
+          <p>
+            If something goes wrong, hard-refresh the page. On Windows and
+            Linux, ctrl-shift-R. On Mac, cmd-shift-R.
+          </p>
+          <h3>Saving Form Data</h3>
+          <p>
+            Optionally, save the form data to a file using the &quot;Save Form
+            Data&quot; button at the bottom of the page. Files are typically
+            saved in the Downloads folder, but the folder can be changed through
+            browser settings. The files have a .json extension.
+          </p>
+          <h3>Reloading Form Data</h3>
+          <p>
+            The button at the top of the form, labeled
+            &quot;Browse&hellip;&quot;, will reload saved form data.
+          </p>
+          <h3>Resetting the Form</h3>
+          <p>
+            It is best to reset the form before working on the next message. Use
+            the browser's hard refresh function, e.g., shift-ctrl-R or shift-F5.
+          </p>
+          <h3>Cookies</h3>
+          <p>
+            When you the save the form data, the form will remember the
+            <em>Operator Call Sign</em> and <em>Operator Name</em>. The operator
+            fields will be pre-filled when you refresh the browser.
+          </p>
+          <p>
+            The &quot;Clear Cookies&quot; button will make the form
+            <em>forget</em> the call sign and name.
+          </p>
+        </div>
+
+        <!-- The close pop-up link correctly positioned at the end of the content block -->
+
+        <a href="#links" class="close"><span>Close</span></a>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div id="message_numbers" class="pure-u-1 no-print">
+        <h1>ICS-213 Message Form</h1>
+
+        <p><a href="#pop1">Instructions</a></p>
+        <p>
+          <label>Load from file: </label>
+          <input
+            type="file"
+            id="select_files"
+            value="Import"
+            accept=".json"
+            size="25"
+          />
+        </p>
+      </div>
+    </div>
+
+    <form name="fema_form" id="fema_form" class="pure-form">
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h2>Message Form</h2>
+        </div>
+        <div class="pure-u-2-3">
+          <fieldset class="horizontal-text-fields">
+            <div class="pure-g">
+              <div class="pure-u-1-2">
+                <div class="pure-control-group">
+                  <label for="origin_msg_num">Origin Msg #:</label>
+                  <input id="origin_msg_num" name="origin_msg_num" size="13" />
+                </div>
+              </div>
+              <div class="pure-u-1-2">
+                <div class="pure-control-group">
+                  <label for="dest_msg_num">Dest. Msg #:</label>
+                  <input
+                    id="dest_msg_num"
+                    name="dest_msg_num"
+                    size="13"
+                    placeholder="Your message #"
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div id="message_area">
+        <div class="pure-g">
+          <div class="pure-u-1-5">
+            <fieldset class="pure-form-stacked">
+              <label for="msg_date">Date</label>
+              <input id="msg_date" name="msg_date" class="pure-input-2-3" />
+              <label for="msg_time">Time (24hr)</label>
+              <input id="msg_time" name="msg_time" class="pure-input-2-3" />
+              <input
+                type="button"
+                id="set_time"
+                name="set_time"
+                class="no-print space-above"
+                value="Set Date &amp; Time"
+              />
+            </fieldset>
+          </div>
+          <div class="pure-u-4-5">
+            <fieldset>
+              <legend>Handling</legend>
+              <input
+                type="radio"
+                id="handling_asap"
+                name="handling"
+                value="asap"
+              />
+              <label for="handling_asap">Immediate ASAP</label>
+              <input
+                type="radio"
+                id="handling_priority"
+                name="handling"
+                value="priority"
+              /><label for="handling_priority"> Priority (&lt;1hr)</label>
+              <input
+                type="radio"
+                id="handling_routine"
+                name="handling"
+                value="routine"
+              /><label for="handling_routine"> Routine (&lt;2hr)</label>
+            </fieldset>
+            <legend>This Message Requests You To</legend>
+            <fieldset>
+              <div class="pure-g">
+                <div class="pure-u-1-6">
+                  <label>Take Action</label>
+                </div>
+                <div class="pure-u-1-3">
+                  <input
+                    type="radio"
+                    id="take_action_y"
+                    name="take_action"
+                    value="yes"
+                  />
+                  <label for="take_action_y">Yes</label>
+                </div>
+                <div class="pure-u-1-2">
+                  <input
+                    type="radio"
+                    id="take_action_n"
+                    name="take_action"
+                    value="no"
+                  />
+                  <label for="take_action_n">No</label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="pure-g">
+                <div class="pure-u-1-6">
+                  <label>Reply</label>
+                </div>
+                <div class="pure-u-1-3">
+                  <input
+                    type="radio"
+                    id="reply_yes"
+                    name="reply_requested"
+                    value="yes"
+                  />
+                  <label for="reply_yes">Yes</label>
+                  <label for="reply_by_time">by</label>
+                  <input id="reply_by_time" name="reply_by_time" size="10" />
+                </div>
+                <div class="pure-u-1-2">
+                  <input
+                    type="radio"
+                    id="reply_no"
+                    name="reply_requested"
+                    value="no"
+                  />
+                  <label for="reply_no">No</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <!-- to and from -->
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <div class="pure-g">
+              <div class="pure-u-1-6 gutter-right">
+                <legend class="tight">To</legend>
+              </div>
+              <div class="pure-u-3-4">
+                <fieldset class="pure-form-stacked">
+                  <label for="to_ics_position">ICS Position</label>
+                  <input
+                    id="to_ics_position"
+                    name="to_ics_position"
+                    class="pure-input-1"
+                  />
+                  <label for="to_location">Location</label>
+                  <input
+                    id="to_location"
+                    name="to_location"
+                    class="pure-input-1"
+                  />
+                  <label for="to_name">Name</label>
+                  <input id="to_name" name="to_name" class="pure-input-1" />
+                  <label for="to_phone">Telephone #</label>
+                  <input id="to_phone" name="to_phone" class="pure-input-1" />
+                </fieldset>
+              </div>
+              <div class="pure-u-1-12"></div>
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div class="pure-g">
+              <div class="pure-u-1-6 gutter-right">
+                <legend class="tight">From</legend>
+              </div>
+              <div class="pure-u-3-4">
+                <fieldset class="pure-form-stacked">
+                  <label for="from_ics_position">ICS Position</label>
+                  <input
+                    id="from_ics_position"
+                    name="from_ics_position"
+                    class="pure-input-1"
+                  />
+                  <label for="from_location">Location</label>
+                  <input
+                    id="from_location"
+                    name="from_location"
+                    class="pure-input-1"
+                  />
+                  <label for="from_name">Name</label>
+                  <input id="from_name" name="from_name" class="pure-input-1" />
+                  <label for="from_phone">Telephone #</label>
+                  <input
+                    id="from_phone"
+                    name="from_phone"
+                    class="pure-input-1"
+                  />
+                </fieldset>
+              </div>
+              <div class="pure-u-1-12"></div>
+            </div>
+          </div>
+        </div>
+
+        <fieldset>
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <label for="subject_line">Subject:</label>
+              <input
+                name="subject_line"
+                id="subject_line"
+                class="pure-input-2-3"
+              />
+            </div>
+            <div class="pure-u-1">
+              <label for="reference"
+                >Reference (e.g., Number of earlier msg):</label
+              >
+              <input
+                name="reference"
+                id="reference"
+                size="25"
+                maxlength="100"
+              />
+            </div>
+            <div class="pure-u-1 pure-form-stacked">
+              <label for="Message">Message</label>
+              <textarea
+                id="Message"
+                class="pure-input-1"
+                rows="6"
+                name="Message"
+                placeholder="You can resize this field by dragging the botton right corner"
+              ></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!-- end of message area -->
+      <!-- begin action taken -->
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <label for="action_taken" class="section-title">
+            Action Taken (For use by Originator/Recipient) Use separate message
+            form if sending reply
+          </label>
+          <textarea
+            id="action_taken"
+            rows="3"
+            class="pure-input-1"
+            name="action_taken"
+          ></textarea>
+        </div>
+        <div class="pure-u-1">
+          <fieldset>
+            <legend class="tight">CC</legend>
+            <div class="cc-checkboxes">
+              <input
+                type="checkbox"
+                id="cc_management"
+                name="cc_list"
+                value="management"
+              />
+              <label for="cc_management">Management</label>
+              <input
+                type="checkbox"
+                id="cc_operations"
+                name="cc_list"
+                value="operations"
+              />
+              <label for="cc_operations">Operations</label>
+              <input
+                type="checkbox"
+                id="cc_planning"
+                name="cc_list"
+                value="planning"
+              />
+              <label for="cc_planning">Planning</label>
+              <input
+                type="checkbox"
+                id="cc_logistics"
+                name="cc_list"
+                value="logistics"
+              />
+              <label for="cc_logistics">Logistics</label>
+              <input
+                type="checkbox"
+                id="cc_finance"
+                name="cc_list"
+                value="finance"
+              />
+              <label for="cc_finance">Finance</label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- end action taken -->
+      <!-- begin operator use only -->
+      <div id="operator_only" class="pure-g">
+        <div class="pure-u-1"><h3>Operator Use Only</h3></div>
+        <div class="pure-u-2-3">
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <fieldset class="horizontal-text-fields">
+                <legend class="tight">Relay:</legend>
+                <label for="relay_rcvd">Rcvd:</label>
+                <input id="relay_rcvd" name="relay_rcvd" size="13" />
+                <label for="relay_sent">Sent:</label>
+                <input id="relay_sent" name="relay_sent" size="13" />
+              </fieldset>
+            </div>
+            <div class="pure-u-1">
+              <fieldset>
+                <legend class="tight">How:</legend>
+                <div class="horizontal-radios">
+                  <input
+                    type="radio"
+                    id="msg_was_received"
+                    name="msg_direction"
+                    value="received"
+                    checked
+                  />
+                  <label for="relay_how_received">Received</label>
+                  or
+                  <input
+                    type="radio"
+                    id="msg_was_sent"
+                    name="msg_direction"
+                    value="sent"
+                  />
+                  <label for="relay_how_sent">Sent</label>
+                </div>
+                <div id="comm-modes">
+                  <div class="column-of-buttons">
+                    <label for="mode_telephone" class="pure-radio">
+                      <input
+                        type="radio"
+                        id="mode_telephone"
+                        name="transmission_mode"
+                        value="telephone"
+                      />
+                      Telephone</label
+                    >
+                    <label for="mode_eoc_radio" class="pure-radio"
+                      ><input
+                        type="radio"
+                        id="mode_eoc_radio"
+                        name="transmission_mode"
+                        value="eoc-radio"
+                      />
+                      EOC Radio</label
+                    >
+
+                    <label for="mode_amateur_radio" class="pure-radio"
+                      ><input
+                        type="radio"
+                        id="mode_amateur_radio"
+                        name="transmission_mode"
+                        value="amateur-radio"
+                        checked
+                      />
+                      Amateur Radio</label
+                    >
+                  </div>
+
+                  <div class="column-of-buttons">
+                    <label for="mode_dispatch_center" class="pure-radio">
+                      <input
+                        type="radio"
+                        id="mode_dispatch_center"
+                        name="transmission_mode"
+                        value="dispatch-center"
+                      />
+                      Dispatch Center</label
+                    >
+
+                    <label for="mode_fax" class="pure-radio"
+                      ><input
+                        type="radio"
+                        id="mode_fax"
+                        name="transmission_mode"
+                        value="fax"
+                      />
+                      FAX</label
+                    >
+
+                    <label for="mode_courier" class="pure-radio"
+                      ><input
+                        type="radio"
+                        id="mode_courier"
+                        name="transmission_mode"
+                        value="courier"
+                      />
+                      Courier</label
+                    >
+
+                    <label for="mode_other" class="pure-radio mode_other"
+                      ><input
+                        type="radio"
+                        id="mode_other"
+                        name="transmission_mode"
+                        value="other" />
+                      <label for="transmission_mode_text">Other</label>
+                      <input
+                        id="transmission_mode_text"
+                        name="transmission_mode_text"
+                    /></label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <fieldset class="pure-form-stacked">
+                <div class="pure-control-group">
+                  <label for="operator_callsign">Operator Call Sign</label>
+                  <input id="operator_callsign" name="operator_callsign" />
+                </div>
+                <div class="pure-control-group">
+                  <label for="operator_name">Operator Name</label>
+                  <input
+                    id="operator_name"
+                    name="operator_name"
+                    class="pure-input-1"
+                    required
+                  />
+                </div>
+              </fieldset>
+            </div>
+            <div class="pure-u-1">
+              <fieldset class="horizontal-text-fields">
+                <label for="operator_date">Date:</label>
+                <input id="operator_date" name="operator_date" size="10" />
+                <label for="operator_time">Time:</label>
+                <input id="operator_time" name="operator_time" size="6" />
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end operator use only -->
+      <div class="pure-g no-print bottom-controls">
+        <div class="pure-u-1-2">
+          <button type="submit">Save Form Data</button>
+          <input type="button" value="Clear Cookies" id="clear_cookies" />
+          <p>
+            To clear the form, do a hard refresh (shift-ctrl-R or shift-cmd-R).
+          </p>
+          <p>
+            The operator callsign and name may be stored in cookies. Press
+            &quot;Clear Cookies&quot; or completely exit the browser to to clear
+            them.
+          </p>
+        </div>
+        <div class="pure-u-1-2 pure-form-aligned">
+          <div class="pure-control-group">
+            <label for="form_name">Form</label>
+            <input
+              type="text"
+              name="form_name"
+              id="form_name"
+              value="SCCo ICS-213"
+              readonly
+            />
+          </div>
+          <div class="pure-control-group">
+            <label for="form_version">Version</label>
+            <input
+              type="text"
+              name="form_version"
+              id="form_version"
+              value="0.3"
+              readonly
+            />
+          </div>
+          <input
+            type="text"
+            name="data_version"
+            id="data_version"
+            value="0.1"
+            readonly
+            hidden
+          />
+        </div>
+      </div>
+    </form>
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <p>Based on SCCo RACES ICS Form213 (01/19/2022)</p>
+      </div>
+    </div>
+    <div class="pure-g no-print">
+      <div class="pure-u-1">
+        <textarea
+          name="parseme"
+          cols="80"
+          rows="5"
+          id="parseme"
+          placeholder="Temporary area for loading data from files"
+          hidden="true"
+        ></textarea>
+      </div>
+    </div>
+    <script type="module">
+      // This app is based on Winlink forms and inspired by PacForms.
+      import initialize from "./src/initialize.js";
+      document.addEventListener("DOMContentLoaded", initialize);
+    </script>
+  </body>
+</html>

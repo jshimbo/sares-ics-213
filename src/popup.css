@@ -1,0 +1,97 @@
+/* Styling applied to classes only */
+
+/* Pop-up content shifted off-screen when not in view.
+   Still readable by screen-reader software.
+   When targeted it fills the browser window.
+*/
+.pop-up {
+  position: absolute;
+  top: 0;
+  left: -500em;
+  visibility: visible;
+}
+
+.pop-up:target {
+  position: static;
+  left: 0;
+}
+
+/* The pop-up itself */
+
+.popBox {
+  background: #ffffff;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 10%;
+  bottom: 20%;
+  z-index: 10;
+  border: 1px solid #3a3a3a;
+
+  /* CSS3 where available: rounded corners, drop-shadow, and fade in. */
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+  visibility: visible;
+}
+
+:target .popBox {
+  position: fixed;
+  opacity: 1;
+}
+
+/* The pop-ups close link, moved via CSS to the top right of the pop-up */
+
+.close:link,
+.close:visited {
+  position: absolute;
+  top: -0.75em;
+  right: -0.75em;
+  display: block;
+  width: 2em;
+  height: 2em;
+  line-height: 1.8;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem 0.5rem rba(0, 0, 0, 0.5);
+  visibility: visible;
+}
+
+.close:before {
+  content: "X";
+}
+
+.close:hover,
+.close:active,
+.close:focus {
+  box-shadow: 0 0 0.5rem 0.5rem rba(255, 0, 0, 0.5);
+  background-color: #c00;
+  color: #fff;
+}
+
+.close span {
+  text-indent: -200em;
+  display: block;
+}
+
+/* The pop-up content div will scroll if it has too much content */
+
+.popScroll {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  overflow-y: auto;
+  padding-right: 0.5em;
+}
+
+.popScroll h2 {
+  margin-top: 0;
+}
